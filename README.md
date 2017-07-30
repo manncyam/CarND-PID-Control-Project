@@ -15,20 +15,20 @@ I choose PID control by manually by try and error. I started with the value from
 I chose to set throttle value according to the steering value.
 If the sterring value is large, the throttle value is set to small. 
 
-'''
-        double max = fabs(steer_value);
-        if(max > 0.7){
-		    throttle = 0.005;
-		  }else if( max > 0.5){
-            throttle = 0.001;
-		  }else if( max > 0.2){
-			throttle = 0.2;  
-		  }else if( max > 0.1){
-			throttle = 0.55;  
-		  }else if( max > 0.01){
-			throttle = 0.65;  
-		  }
-'''
+```
+double max = fabs(steer_value);
+if(max > 0.7){
+  throttle = 0.005;
+}else if( max > 0.5){
+  throttle = 0.001;
+}else if( max > 0.2){
+  throttle = 0.2;  
+}else if( max > 0.1){
+  throttle = 0.55;  
+}else if( max > 0.01){
+  throttle = 0.65;  
+}
+```
 
 ## Dependencies
 
