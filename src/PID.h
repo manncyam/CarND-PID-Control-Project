@@ -1,5 +1,6 @@
 #ifndef PID_H
 #define PID_H
+#include <vector>
 
 class PID {
 public:
@@ -17,6 +18,7 @@ public:
   double Ki;
   double Kd;
 
+  std::vector<int> dp;
   /*
   * Constructor
   */
@@ -37,6 +39,13 @@ public:
   */
   void UpdateError(double cte);
 
+  /*
+  * Update the PID gain variables
+  */
+  void UpdateGain(double cte);
+  
+  double run(std::vector<double>& params, int n=100, double speed=1.0);
+  
   /*
   * Calculate the total PID error.
   */
