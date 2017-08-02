@@ -34,7 +34,7 @@ int main()
 
   PID pid;
   // TODO: Initialize the pid variable.
-  pid.Init(0.2, 0.0001, 3.5);
+  pid.Init(0.2, 0.0005, 3.5);
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> *ws, char *data, size_t length, uWS::OpCode opCode) {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
@@ -58,7 +58,7 @@ int main()
           * another PID controller to control the speed!
           */
 		  // used to control set throttle responding to steering value
-          double throttle = 0.75;
+          double throttle = 0.9;
 		  // update PID error
 		  pid.UpdateError(cte);
 		  steer_value = pid.TotalError();
@@ -66,15 +66,15 @@ int main()
 		  //check how large is the steer value and speed up or slow down
 		  //by setting the throttle value accordingly
 		  if(max > 0.7){
-		    throttle = 0.005;
+		    throttle = 0.0075;
 		  }else if( max > 0.5){
-            throttle = 0.001;
+            throttle = 0.05;
 		  }else if( max > 0.2){
-			throttle = 0.2;  
+			throttle = 0.3;  
 		  }else if( max > 0.1){
-			throttle = 0.55;  
-		  }else if( max > 0.01){
 			throttle = 0.65;  
+		  }else if( max > 0.01){
+			throttle = 0.8;  
 		  }
 		  
 		  // DEBUG
