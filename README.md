@@ -6,13 +6,27 @@ Self-Driving Car Engineer Nanodegree Program
 The goal of the project is to implement PID (Proposonal Integral and Differential control)
 
 First I tried to use only P-control and here is the result:
+
 [![Implement P control](https://img.youtube.com/vi/U35FTojViHA/0.jpg)](https://www.youtube.com/watch?v=U35FTojViHA)
 
+The result is as expected when using only P control. The car is oscillating along the road.
+
 Then I tried to use PD control.
+
+[![Implement P & D control](https://img.youtube.com/vi/QC30qc2cI2s/0.jpg)](https://www.youtube.com/watch?v=QC30qc2cI2s)
+
+The car now drives much smoother on the road when adding D control in.
+
 Finally, I tried PID control.
 
-## How to choose PID gain
-I choose PID control by manually by try and error. I started with the value from the Udacity class. 
+[![Implement P & D control](https://img.youtube.com/vi/q-MwZ0pT5RE/0.jpg)](https://www.youtube.com/watch?v=q-MwZ0pT5RE)
+
+The car also drives as smooth as using only P & D controls. It is hard to tell the different. I can see the car turns smoother at wide turn than using P & D.
+
+## How to choose PID gains
+I chose PID gains manually using trial and error method. I started with the value from the Udacity class (Kp = 0.2, Ki = 0.004, Kd = 3.0) and I chose my final gain value as follow:
+
+(Kp = 0.2, Ki = 0.0005, Kd = 3.5) 
 
 ## How to improve driving manuever
 I chose to set throttle value according to the steering value.
