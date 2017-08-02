@@ -2,6 +2,50 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Goal of the Project
+The goal of the project is to implement PID (Proposonal Integral and Differential control)
+
+First I tried to use only P-control and here is the result:
+
+[![Implement P control](https://img.youtube.com/vi/U35FTojViHA/0.jpg)](https://www.youtube.com/watch?v=U35FTojViHA)
+
+The result is as expected when using only P control. The car is oscillating along the road.
+
+Then I tried to use PD control.
+
+[![Implement P & D control](https://img.youtube.com/vi/QC30qc2cI2s/0.jpg)](https://www.youtube.com/watch?v=QC30qc2cI2s)
+
+The car now drives much smoother on the road when adding D control in.
+
+Finally, I tried PID control.
+
+[![Implement P & D control](https://img.youtube.com/vi/q-MwZ0pT5RE/0.jpg)](https://www.youtube.com/watch?v=q-MwZ0pT5RE)
+
+The car also drives as smooth as using only P & D controls. It is hard to tell the different. I can see the car turns smoother at wide turn than using P & D.
+
+## How to choose PID gains
+I chose PID gains manually using trial and error method. I started with the value from the Udacity class (Kp = 0.2, Ki = 0.004, Kd = 3.0) and I chose my final gain value as follow:
+
+(Kp = 0.2, Ki = 0.0005, Kd = 3.5) 
+
+## How to improve driving manuever
+I chose to set throttle value according to the steering value.
+If the sterring value is large, the throttle value is set to small. 
+
+```
+double max = fabs(steer_value);
+if(max > 0.7){
+    throttle = 0.0075;
+}else if( max > 0.5){
+    throttle = 0.05;
+}else if( max > 0.2){
+    throttle = 0.3;  
+}else if( max > 0.1){
+    throttle = 0.65;  
+}else if( max > 0.01){
+    throttle = 0.8;  
+}
+```
 
 ## Dependencies
 
@@ -44,49 +88,3 @@ using the following settings:
 * indent using spaces
 * set tab width to 2 spaces (keeps the matrices in source code aligned)
 
-## Code Style
-
-Please (do your best to) stick to [Google's C++ style guide](https://google.github.io/styleguide/cppguide.html).
-
-## Project Instructions and Rubric
-
-Note: regardless of the changes you make, your project must be buildable using
-cmake and make!
-
-More information is only accessible by people who are already enrolled in Term 2
-of CarND. If you are enrolled, see [the project page](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/f1820894-8322-4bb3-81aa-b26b3c6dcbaf/lessons/e8235395-22dd-4b87-88e0-d108c5e5bbf4/concepts/6a4d8d42-6a04-4aa6-b284-1697c0fd6562)
-for instructions and the project rubric.
-
-## Hints!
-
-* You don't have to follow this directory structure, but if you do, your work
-  will span all of the .cpp files here. Keep an eye out for TODOs.
-
-## Call for IDE Profiles Pull Requests
-
-Help your fellow students!
-
-We decided to create Makefiles with cmake to keep this project as platform
-agnostic as possible. Similarly, we omitted IDE profiles in order to we ensure
-that students don't feel pressured to use one IDE or another.
-
-However! I'd love to help people get up and running with their IDEs of choice.
-If you've created a profile for an IDE that you think other students would
-appreciate, we'd love to have you add the requisite profile files and
-instructions to ide_profiles/. For example if you wanted to add a VS Code
-profile, you'd add:
-
-* /ide_profiles/vscode/.vscode
-* /ide_profiles/vscode/README.md
-
-The README should explain what the profile does, how to take advantage of it,
-and how to install it.
-
-Frankly, I've never been involved in a project with multiple IDE profiles
-before. I believe the best way to handle this would be to keep them out of the
-repo root to avoid clutter. My expectation is that most profiles will include
-instructions to copy files to a new location to get picked up by the IDE, but
-that's just a guess.
-
-One last note here: regardless of the IDE used, every submitted project must
-still be compilable with cmake and make./
