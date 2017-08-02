@@ -5,7 +5,10 @@ Self-Driving Car Engineer Nanodegree Program
 ## Goal of the Project
 The goal of the project is to implement PID (Proposonal Integral and Differential control)
 
-First I tried to use only P-control. Then I tried to use PD control.
+First I tried to use only P-control and here is the result:
+[![Implement P control](https://img.youtube.com/vi/U35FTojViHA/0.jpg)](https://www.youtube.com/watch?v=U35FTojViHA)
+
+Then I tried to use PD control.
 Finally, I tried PID control.
 
 ## How to choose PID gain
@@ -18,15 +21,15 @@ If the sterring value is large, the throttle value is set to small.
 ```
 double max = fabs(steer_value);
 if(max > 0.7){
-  throttle = 0.005;
+    throttle = 0.0075;
 }else if( max > 0.5){
-  throttle = 0.001;
+    throttle = 0.05;
 }else if( max > 0.2){
-  throttle = 0.2;  
+    throttle = 0.3;  
 }else if( max > 0.1){
-  throttle = 0.55;  
+    throttle = 0.65;  
 }else if( max > 0.01){
-  throttle = 0.65;  
+    throttle = 0.8;  
 }
 ```
 
